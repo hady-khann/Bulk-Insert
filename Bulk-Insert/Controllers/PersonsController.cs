@@ -77,11 +77,6 @@ namespace Bulk_Insert.Controllers
                     //    bulk.BatchSize = gen.table.Rows.Count;
 
 
-
-
-
-
-
                     //}
 
                 }
