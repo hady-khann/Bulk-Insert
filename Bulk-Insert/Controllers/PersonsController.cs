@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Bulk_Insert.Models;
 using Bulk_Insert.Services;
@@ -63,25 +60,10 @@ namespace Bulk_Insert.Controllers
             //    return RedirectToAction(nameof(Index));
             //}
 
-            for (int i = 0; i < 5; i++)
+            using (Parallel_Bulk PB = new Parallel_Bulk())
             {
-                using (Generator gen = new Generator())
-                {
-                    gen.gen_list();
-
-                    //using (SqlBulkCopy bulk = new SqlBulkCopy())
-                    //{
-
-                    //    SqlConnection con = new SqlConnection();
-                    //    bulk.DestinationTableName ="dbo.tbl_person";
-                    //    bulk.BatchSize = gen.table.Rows.Count;
-
-
-                    //}
-
-                }
-            }
-
+                PB.Bulk_InTo_DB();
+            };
 
 
             return View();

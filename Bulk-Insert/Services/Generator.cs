@@ -1,7 +1,11 @@
 ﻿using Bulk_Insert.Models;
+using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.IO;
 using System.Linq;
+using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -10,10 +14,12 @@ namespace Bulk_Insert.Services
     public class Generator : IDisposable
     {
         public List<TblPerson> people = new List<TblPerson>();
-
-        //public DataTable table = new DataTable();
+        List<int> transaction_records_count = new List<int>();
 
         Random rnd = new Random();
+
+
+
 
         public void gen_list()
         {
@@ -38,6 +44,36 @@ namespace Bulk_Insert.Services
             Thread t17 = new Thread(() => gen_record());
             Thread t18 = new Thread(() => gen_record());
             Thread t19 = new Thread(() => gen_record());
+            Thread t20 = new Thread(() => gen_record());
+            Thread t21 = new Thread(() => gen_record());
+            Thread t22 = new Thread(() => gen_record());
+            Thread t23 = new Thread(() => gen_record());
+            Thread t24 = new Thread(() => gen_record());
+            Thread t25 = new Thread(() => gen_record());
+            Thread t26 = new Thread(() => gen_record());
+            Thread t27 = new Thread(() => gen_record());
+            Thread t28 = new Thread(() => gen_record());
+            Thread t29 = new Thread(() => gen_record());
+            Thread t30 = new Thread(() => gen_record());
+            Thread t31 = new Thread(() => gen_record());
+            Thread t32 = new Thread(() => gen_record());
+            Thread t33 = new Thread(() => gen_record());
+            Thread t34 = new Thread(() => gen_record());
+            Thread t35 = new Thread(() => gen_record());
+            Thread t36 = new Thread(() => gen_record());
+            Thread t37 = new Thread(() => gen_record());
+            Thread t38 = new Thread(() => gen_record());
+            Thread t39 = new Thread(() => gen_record());
+            Thread t40 = new Thread(() => gen_record());
+            Thread t41 = new Thread(() => gen_record());
+            Thread t42 = new Thread(() => gen_record());
+            Thread t43 = new Thread(() => gen_record());
+            Thread t44 = new Thread(() => gen_record());
+            Thread t45 = new Thread(() => gen_record());
+            Thread t46 = new Thread(() => gen_record());
+            Thread t47 = new Thread(() => gen_record());
+            Thread t48 = new Thread(() => gen_record());
+            Thread t49 = new Thread(() => gen_record());
             #endregion
 
             #region Threads Priority
@@ -61,6 +97,36 @@ namespace Bulk_Insert.Services
             t17.Priority = ThreadPriority.Highest;
             t18.Priority = ThreadPriority.Highest;
             t19.Priority = ThreadPriority.Highest;
+            t20.Priority = ThreadPriority.Highest;
+            t21.Priority = ThreadPriority.Highest;
+            t22.Priority = ThreadPriority.Highest;
+            t23.Priority = ThreadPriority.Highest;
+            t24.Priority = ThreadPriority.Highest;
+            t25.Priority = ThreadPriority.Highest;
+            t26.Priority = ThreadPriority.Highest;
+            t27.Priority = ThreadPriority.Highest;
+            t28.Priority = ThreadPriority.Highest;
+            t29.Priority = ThreadPriority.Highest;
+            t30.Priority = ThreadPriority.Highest;
+            t31.Priority = ThreadPriority.Highest;
+            t32.Priority = ThreadPriority.Highest;
+            t33.Priority = ThreadPriority.Highest;
+            t34.Priority = ThreadPriority.Highest;
+            t35.Priority = ThreadPriority.Highest;
+            t36.Priority = ThreadPriority.Highest;
+            t37.Priority = ThreadPriority.Highest;
+            t38.Priority = ThreadPriority.Highest;
+            t39.Priority = ThreadPriority.Highest;
+            t40.Priority = ThreadPriority.Highest;
+            t41.Priority = ThreadPriority.Highest;
+            t42.Priority = ThreadPriority.Highest;
+            t43.Priority = ThreadPriority.Highest;
+            t44.Priority = ThreadPriority.Highest;
+            t45.Priority = ThreadPriority.Highest;
+            t46.Priority = ThreadPriority.Highest;
+            t47.Priority = ThreadPriority.Highest;
+            t48.Priority = ThreadPriority.Highest;
+            t49.Priority = ThreadPriority.Highest;
             #endregion
 
             #region Threads Strat
@@ -84,6 +150,36 @@ namespace Bulk_Insert.Services
             t17.Start();
             t18.Start();
             t19.Start();
+            t20.Start();
+            t21.Start();
+            t22.Start();
+            t23.Start();
+            t24.Start();
+            t25.Start();
+            t26.Start();
+            t27.Start();
+            t28.Start();
+            t29.Start();
+            t30.Start();
+            t31.Start();
+            t32.Start();
+            t33.Start();
+            t34.Start();
+            t35.Start();
+            t36.Start();
+            t37.Start();
+            t38.Start();
+            t39.Start();
+            t40.Start();
+            t41.Start();
+            t42.Start();
+            t43.Start();
+            t44.Start();
+            t45.Start();
+            t46.Start();
+            t47.Start();
+            t48.Start();
+            t49.Start();
             #endregion
 
             #region Threads Join
@@ -107,50 +203,97 @@ namespace Bulk_Insert.Services
             t17.Join();
             t18.Join();
             t19.Join();
+            t20.Join();
+            t21.Join();
+            t22.Join();
+            t23.Join();
+            t24.Join();
+            t25.Join();
+            t26.Join();
+            t27.Join();
+            t28.Join();
+            t29.Join();
+            t30.Join();
+            t31.Join();
+            t32.Join();
+            t33.Join();
+            t34.Join();
+            t35.Join();
+            t36.Join();
+            t37.Join();
+            t38.Join();
+            t39.Join();
+            t40.Join();
+            t41.Join();
+            t42.Join();
+            t43.Join();
+            t44.Join();
+            t45.Join();
+            t46.Join();
+            t47.Join();
+            t48.Join();
+            t49.Join();
             #endregion
 
         }
 
+        public void logger(string Execution_ID,int dbcount , string time , string ttime)
+        {
+            StreamWriter writer = null;
+            string path = @"C:\Users\Hady_khann\source\repos\Log.txt";
+            int Generated_Recordes = people.Count();
+            int count_all=0;
+
+            transaction_records_count.Add(Generated_Recordes);
+
+
+            foreach (var item in transaction_records_count)
+            {
+                count_all += item;
+            }
+
+
+            using (writer = File.AppendText(path))
+            {
+                writer.WriteLine(Execution_ID + ":::" +"Generated Recordes : " + Generated_Recordes + " ||| DB Total Records : " + dbcount +
+                    " |||  ekhtelaf :  " + (dbcount - count_all) + " ||| Spent Time  : " + time + " ||| Total Time  : " + ttime +  Environment.NewLine);
+            }
+            writer.Close();
+            writer.Dispose();
+
+
+        }
+
+        public SqlConnection Get_Connection()
+        {
+            return new SqlConnection("Server=.;Database=FakeDB;Trusted_Connection=True;");
+        }
+
+
+
+
+
         private void gen_record()
         {
-            //table.TableName = "People";
-
-            //table.Columns.Add("id", typeof(string));
-            //table.Columns.Add("Fname", typeof(string));
-            //table.Columns.Add("Lname", typeof(string));
-            //table.Columns.Add("Faname", typeof(string));
-            //table.Columns.Add("Age", typeof(int));
-            //table.Columns.Add("Grade", typeof(int));
-            //table.Columns.Add("Address", typeof(string));
-
-            //for (int i = 0; i < 1000; i++)
-            //{
-            //    var row = table.NewRow();
-            //    row["id"] = rand_id();
-            //    row["Fname"] = rand_string(3,10);
-            //    row["Lname"] = rand_string(4, 20);
-            //    row["Faname"] = rand_string(3, 10);
-            //    row["Age"] = rand_num(100);
-            //    row["Grade"] = rand_num(30);
-            //    row["Address"] = rand_string(100,200);
-
-            //    table.Rows.Add(row);
-            //}
-
-
-            for (int i = 0; i < 60000; i++)
+            for (int i = 1; i <= 10100; i++)
             {
-                people.Add(new TblPerson
-                {
-                    Id = rand_id(),
-                    Fname = rand_string(3, 10),
-                    Lname = rand_string(4, 20),
-                    Faname = rand_string(3, 10),
-                    Age = rand_num(100),
-                    Grade = rand_num(30),
-                    Address = rand_string(100, 200)
-                });
 
+                try
+                {
+                    people.Add(new TblPerson
+                    {
+                        Fname = rand_string(4, 10),
+                        Lname = rand_string(5, 20),
+                        Faname = rand_string(3, 10),
+                        Age = rand_num(100),
+                        Grade = rand_num(30),
+                        Address = rand_string(150, 200)
+                    });
+                }
+                catch (Exception)
+                {
+                    continue;
+                }
             }
         }
 
@@ -170,12 +313,7 @@ namespace Bulk_Insert.Services
 
         private int rand_num(int max)
         {
-            return rnd.Next(1, max);
-        }
-
-        private string rand_id()
-        {
-            return "" + DateTime.Now.ToString("Hmsff") + rnd.Next(10, 99) + rnd.Next(10, 99);
+            return rnd.Next(2, max);
         }
 
         public void Dispose()
